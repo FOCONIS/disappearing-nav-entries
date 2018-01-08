@@ -79,7 +79,9 @@ public class NavigationLayout extends VerticalLayout {
 		navigationTree.setDataProvider(dataProvider);
 
 		navigationTree.setWidth("250px");
+		// Setting the height to 100% causes problem with flickering grid and disappearing items
 		navigationTree.setHeight("100%");
+		// Workaround: Use a fixed height for the grid and the flickering goes away
 		//navigationTree.setHeight("700px");
 		
 		Column<NavigationEntry, String> colTitle = navigationTree.addColumn(item -> item.getName());
