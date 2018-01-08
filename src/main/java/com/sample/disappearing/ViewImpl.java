@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
@@ -37,7 +38,9 @@ public class ViewImpl extends HorizontalLayout implements View {
 		addComponent(mainLayout);
 		setExpandRatio(mainLayout, 1);
 		
-		mainLayout.addComponent(new Label(content));
+		mainLayout.addComponent(new Label(content + "\n"
+				+ "This is just some text on the main page. After using the navigation 'Item 4' it disappears.",	
+				ContentMode.PREFORMATTED));
 		
 		Grid<String> grid = new Grid<>();
 		grid.setSizeFull();
@@ -52,7 +55,7 @@ public class ViewImpl extends HorizontalLayout implements View {
 		grid.addColumn(str -> "3-" + str);
 		grid.addColumn(str -> "4-" + str);
 		grid.setItems(list);
-		mainLayout.addComponent(grid);
+		// mainLayout.addComponent(grid);
 	}
 	
 	public void enter(ViewChangeEvent event) {
